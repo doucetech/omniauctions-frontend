@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Axios from 'axios'
 
 const axios = Axios.create({
@@ -6,7 +7,7 @@ const axios = Axios.create({
         'X-Requested-With': 'XMLHttpRequest',
     },
     withCredentials: true,
-    withXSRFToken: true
+    withXSRFToken: true,
 })
 
 export default axios

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 'use client'
 
 import Link from 'next/link'
@@ -11,23 +12,20 @@ const LoginLinks = () => {
             {user ? (
                 <Link
                     href="/dashboard"
-                    className="ml-4 text-sm text-gray-700 underline"
-                >
+                    className="ml-4 text-sm text-gray-700 underline">
                     Dashboard
                 </Link>
             ) : (
                 <>
                     <Link
                         href="/login"
-                        className="text-sm text-gray-700 underline"
-                    >
+                        className="text-sm text-gray-700 underline">
                         Login
                     </Link>
 
                     <Link
                         href="/register"
-                        className="ml-4 text-sm text-gray-700 underline"
-                    >
+                        className="ml-4 text-sm text-gray-700 underline">
                         Register
                     </Link>
                 </>

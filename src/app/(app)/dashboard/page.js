@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Header from '@/app/(app)/Header'
 
 export const metadata = {
