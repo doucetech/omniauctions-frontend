@@ -1,6 +1,9 @@
-import LoginLinks from '@/app/LoginLinks'
-import Navbar from './Navbar'
-import Slider from './Slider'
+import Navbar from '@/app/Navbar'
+import Slider from '@/components/Slider'
+import Trusted from '@/components/Trusted'
+import AuctionTabs from '@/components/AuctionTabs'
+import TopBar from '@/components/TopBar'
+import Footer from '@/components/Footer'
 export const metadata = {
     title: 'Omni Auctions',
 }
@@ -8,13 +11,14 @@ export const metadata = {
 const Home = () => {
     return (
         <>
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <LoginLinks />
-            </div>
-             <div className="home-container">
+            <TopBar />
+            <div className="home-container">
                 <Navbar />
-                <Slider/>
-           </div>
+                <Slider />
+                <Trusted />
+                <AuctionTabs />
+            </div>
+            <Footer />
         </>
     )
 }

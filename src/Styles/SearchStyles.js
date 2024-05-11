@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SearchTrigger = styled.a`
     position: relative;
@@ -16,26 +16,25 @@ export const SearchTrigger = styled.a`
 
     &::before,
     &::after {
-        content: "";
+        content: '';
         position: absolute;
         transition: opacity 0.3s;
         transform: translateZ(0);
         backface-visibility: hidden;
     }
-&::before {
-	top: 30px;
-	left: 23px;
-	width: 22px;
-	height: 22px;
-	border-radius: 50%;
-	border: 3px solid transparent;
-	font-family: 'omni';
-	content: "\uE805";
-	color: var(--the-black);
-	text-indent: 31px;
-	font-size: 1.4em;
-}
-
+    &::before {
+        top: 30px;
+        left: 23px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        font-family: 'omni';
+        content: '\uE805';
+        color: var(--the-black);
+        text-indent: 31px;
+        font-size: 1.4em;
+    }
 
     &::after {
         height: 15px;
@@ -55,7 +54,7 @@ export const SearchTrigger = styled.a`
 
     span::before,
     span::after {
-        content: "";
+        content: '';
         position: absolute;
         display: inline-block;
         height: 3px;
@@ -96,7 +95,7 @@ export const SearchTrigger = styled.a`
     &.search-is-visible span::after {
         transform: rotate(45deg);
     }
-`;
+`
 
 export const SearchInput = styled.input`
     padding: 20px;
@@ -108,4 +107,4 @@ export const SearchInput = styled.input`
     width: 100%;
     left: 3px;
     z-index: 9;
-`;
+`
