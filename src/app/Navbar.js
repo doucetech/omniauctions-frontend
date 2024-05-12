@@ -17,14 +17,14 @@ const Navbar = () => {
     return (
         <>
             <nav>
-                <Link href="/dashboard">
+                <Link href="/">
                     <ApplicationLogo className="block h-12 w-auto fill-current text-gray-600" />
                 </Link>
                 <div className="navbar-links-container">
-                    <a href="">Buy</a>
-                    <a href="">Sell</a>
-                    <a href="">About Omni</a>
-                    <a href="">More</a>
+                    <Link href="/buy">Buy</Link>
+                    <Link href="/sell">Sell</Link>
+                    <Link href="/about-omni">About Omni</Link>
+                    <Link href="/more">More</Link>
                 </div>
 
                 <div className="reg-login">

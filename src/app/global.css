@@ -16,12 +16,12 @@
 
 @font-face {
     font-family: 'omni';
-    src: url('../Fonts/omni.eot');
-    src: url('../Fonts/omni.eot?31261298#iefix') format('embedded-opentype'),
-        url('../Fonts/omni.woff2?31261298') format('woff2'),
-        url('../Fonts/omni.woff?31261298') format('woff'),
-        url('../Fonts/omni.ttf?31261298') format('truetype'),
-        url('../Fonts/omni.svg?31261298#omni') format('svg');
+    src: url('../fonts/omni.eot');
+    src: url('../fonts/omni.eot?31261298#iefix') format('embedded-opentype'),
+        url('../fonts/omni.woff2?31261298') format('woff2'),
+        url('../fonts/omni.woff?31261298') format('woff'),
+        url('../fonts/omni.ttf?31261298') format('truetype'),
+        url('../fonts/omni.svg?31261298#omni') format('svg');
     font-weight: normal;
     font-style: normal;
 }
