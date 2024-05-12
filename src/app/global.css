@@ -42,7 +42,7 @@
     font-style: normal;
     font-weight: normal;
     speak: never;
-
+ 
     display: inline-block;
     text-decoration: inherit;
     width: 1em;
@@ -134,12 +134,12 @@ img {
     max-width: 100%;
     height: auto;
 }
-.App {
+/* .App {
     min-height: 100vh;
     width: 90%;
     max-width: 1900px;
     margin: 0rem auto;
-}
+} */
 body {
     max-width: 100%;
     overflow-x: hidden;
