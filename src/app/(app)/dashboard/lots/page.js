@@ -18,7 +18,7 @@ const AddProduct = () => {
         setErrorMessage('')
 
         try {
-            const response = await axios.post('/api/v1/products', {
+            await axios.post('/api/v1/products', {
                 name,
                 description,
                 price,

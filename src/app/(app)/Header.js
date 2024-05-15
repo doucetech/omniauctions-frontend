@@ -1,9 +1,6 @@
 /* eslint-disable prettier/prettier */
 'use client'
 
-import ResponsiveNavLink, {
-    ResponsiveNavButton,
-} from '@/components/ResponsiveNavLink'
 import ApplicationLogo from '@/components/ApplicationLogo'
 import Link from 'next/link'
 import Dropdown from '@/components/Dropdown'

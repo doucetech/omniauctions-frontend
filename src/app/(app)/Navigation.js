@@ -31,9 +31,7 @@ const Navigation = () => {
                 </div>
 
                 <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
-                    <nav
-                        className="mt-5 px-4 py-4 lg:mt-9 lg:px-6"
-                        x-data="{selected: $persist('Dashboard')}">
+                    <nav className="mt-5 px-4 py-4 lg:mt-9 lg:px-6">
                         <div>
                             <h3 className="mb-4 ml-4 text-sm font-medium text-bodydark2">
                                 MENU
