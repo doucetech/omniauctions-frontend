@@ -50,13 +50,10 @@ const LotPage = ({ params }) => {
 
     const handleBidSubmit = async () => {
         try {
-            const response = await axios.post(
-                `/api/v1/products/${productId}/bids`,
-                {
-                    user_id: 1,
-                    amount: selectedBid,
-                },
-            )
+            await axios.post(`/api/v1/products/${productId}/bids`, {
+                user_id: 1,
+                amount: selectedBid,
+            })
             setCurrentBid(selectedBid)
             setSelectedBid(null)
             fetchNextBids()
