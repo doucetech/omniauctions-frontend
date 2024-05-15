@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable-next-line react/self-closing-comp */
+/* eslint-disable-next-line react/no-unknown-property */
 'use client'
 
 import ApplicationLogo from '@/components/ApplicationLogo'
