@@ -15,15 +15,15 @@
 }
 
 @font-face {
-  font-family: 'omni';
-  src: url('/fonts/omni.eot');
-  src: url('/fonts/omni.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/omni.woff2') format('woff2'),
-       url('/fonts/omni.woff') format('woff'),
-       url('/fonts/omni.ttf') format('truetype'),
-       url('/fonts/omni.svg#omni') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'omni';
+    src: url('/fonts/omni.eot');
+    src: url('/fonts/omni.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/omni.woff2') format('woff2'),
+        url('/fonts/omni.woff') format('woff'),
+        url('/fonts/omni.ttf') format('truetype'),
+        url('/fonts/omni.svg#omni') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 [class^='icon-']:before,
@@ -45,15 +45,13 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'omni';
-    src: url('../font/omni.svg?31261298#omni') format('svg');
+    src: url('/font/omni.svg?31261298#omni') format('svg');
   }
 }
 */
@@ -63,7 +61,7 @@
     font-style: normal;
     font-weight: normal;
     speak: never;
- 
+
     display: inline-block;
     text-decoration: inherit;
     width: 1em;
@@ -148,9 +146,14 @@ li {
     font-weight: 400;
     font-style: normal;
 }
-h1, h2, h3, h4, h5, h6 {
-	font-size: 2em;
-	font-weight: 400;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 2em;
+    font-weight: 400;
 }
 a {
     text-decoration: none;
@@ -160,10 +163,12 @@ img {
     height: auto;
 }
 .App {
-    min-height: 100vh;
-    width: 90%;
-    max-width: 1900px;
-    margin: 0rem auto;
+    .App {
+        min-height: 100vh;
+        width: 90%;
+        max-width: 1900px;
+        margin: 0rem auto;
+    }
 }
 body {
     max-width: 100%;
@@ -344,11 +349,11 @@ nav {
     margin: 0 auto;
 }
 .search-width input {
-	position: absolute;
-	width: 95%;
-	height: 69px;
-	padding: 15px;
-	transform: translate(2.5%);
+    position: absolute;
+    width: 95%;
+    height: 69px;
+    padding: 15px;
+    transform: translate(2.5%);
 }
 .search-width button {
     position: absolute;
@@ -373,8 +378,8 @@ nav {
     position: relative;
 }
 .search-width {
-	background: var(--the-black-gradient);
-	height: 95px;
+    background: var(--the-black-gradient);
+    height: 95px;
 }
 .search-width button::before {
     content: '\e805';
