@@ -14,6 +14,17 @@ const LotPage = ({ params }) => {
     const [selectedBid, setSelectedBid] = useState(null)
     const [currentBid, setCurrentBid] = useState(null)
 
+    const fetchNextBids = async () => {
+        try {
+            const response = await axios.get(
+                `/api/v1/products/${productId}/next-bids`,
+            )
+            setNextBids(response.data)
+        } catch (error) {
+            console.error('Error fetching next bids:', error)
+        }
+    }
+
     useEffect(() => {
         const fetchProduct = async () => {
             try {
@@ -28,17 +39,6 @@ const LotPage = ({ params }) => {
                 console.error('Error fetching product:', error)
             } finally {
                 setLoading(false)
-            }
-        }
-
-        const fetchNextBids = async () => {
-            try {
-                const response = await axios.get(
-                    `/api/v1/products/${productId}/next-bids`,
-                )
-                setNextBids(response.data)
-            } catch (error) {
-                console.error('Error fetching next bids:', error)
             }
         }
 
@@ -57,7 +57,9 @@ const LotPage = ({ params }) => {
                     amount: selectedBid,
                 },
             )
-            console.log('Bid placed:', response.data)
+            setCurrentBid(selectedBid)
+            setSelectedBid(null)
+            fetchNextBids()
         } catch (error) {
             console.error('Error placing bid:', error)
         }
