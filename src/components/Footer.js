@@ -1,3 +1,5 @@
+/* eslint-disable react/self-closing-comp */
+
 import React from 'react'
 
 const Footer = () => {

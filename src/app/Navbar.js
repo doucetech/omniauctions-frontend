@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react/self-closing-comp */
+
 'use client'
 
 import { useState } from 'react'

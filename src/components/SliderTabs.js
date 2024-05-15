@@ -12,7 +12,6 @@ const SliderTabs = () => {
 
     const handleSearch = () => {
         // Implement your search logic here
-        console.log(`Searching for ${searchValue} in ${activeTab}`)
     }
 
     return (
