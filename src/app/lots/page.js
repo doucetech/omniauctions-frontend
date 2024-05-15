@@ -1,17 +1,18 @@
 import TopBar from '@/components/TopBar'
-import Navbar from '@/app/Navbar'
 import Footer from '@/components/Footer'
+import Navbar from '@/app/Navbar'
 import BreadCrumbs from '@/components/BreadCrumbs'
 export const metadata = {
-    title: 'Omni Auctions About',
+    title: 'Omni Auctions Lots',
 }
 
-const About = () => {
+const Lots = () => {
     return (
         <>
             <TopBar />
-            <div className="about-container">
-                <Navbar />
+            <Navbar />
+            <div className="buy-container">
+                
                 <BreadCrumbs/>
             </div>
             <Footer />
@@ -19,4 +20,4 @@ const About = () => {
     )
 }
 
-export default About
+export default Lots

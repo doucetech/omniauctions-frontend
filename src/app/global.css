@@ -566,3 +566,15 @@ nav {
     width: 100%;
     top: -30px;
 }
+/* About menu border-bottom */
+.about-container nav::before {
+	content: "";
+	position: absolute;
+	border-bottom: 1px solid var(--the-grey);
+	width: 200vw;
+	left: -100vw;
+	bottom: -10px;
+}
+.about-container {
+	position: relative;
+}
