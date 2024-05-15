@@ -24,7 +24,7 @@ const Navbar = () => {
                 </Link>
                 <div className="navbar-links-container">
                     <Link href="/buy">Buy</Link>
-                    <Link href="/sell">Sell</Link>
+                    <Link href="/lots">Lots</Link>
                     <Link href="/about-omni">About Omni</Link>
                     <Link href="/more">More</Link>
                 </div>

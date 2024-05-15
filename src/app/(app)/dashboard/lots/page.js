@@ -2,26 +2,37 @@
 
 import { useState } from 'react'
 import axios from '@/lib/axios'
-import { useRouter } from 'next/router'
 
 const AddProduct = () => {
-    // const router = useRouter()
-
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [successMessage, setSuccessMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
     const handleSubmit = async e => {
         e.preventDefault()
+        setLoading(true)
+        setSuccessMessage('')
+        setErrorMessage('')
+
         try {
-            await axios.post('/api/v1/products', {
+            const response = await axios.post('/api/v1/products', {
                 name,
                 description,
                 price,
             })
-            // router.push('/dashboard')
+            setSuccessMessage('Product added successfully!')
+            setName('')
+            setDescription('')
+            setPrice('')
         } catch (error) {
-            console.error('Error creating product:', error)
+            setErrorMessage(
+                error.response?.data?.message || 'Error creating product',
+            )
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -34,6 +45,14 @@ const AddProduct = () => {
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="p-6.5">
+                    {successMessage && (
+                        <div className="mb-4 text-green-500">
+                            {successMessage}
+                        </div>
+                    )}
+                    {errorMessage && (
+                        <div className="mb-4 text-red-500">{errorMessage}</div>
+                    )}
                     <div className="mb-4.5">
                         <label
                             className="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -77,8 +96,9 @@ const AddProduct = () => {
                     </div>
                     <button
                         className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
-                        type="submit">
-                        Add Product
+                        type="submit"
+                        disabled={loading}>
+                        {loading ? 'Loading...' : 'Add Product'}
                     </button>
                 </div>
             </form>
