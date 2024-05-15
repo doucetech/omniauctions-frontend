@@ -21,7 +21,7 @@ const LotPage = ({ params }) => {
             )
             setNextBids(response.data)
         } catch (error) {
-            console.error('Error fetching next bids:', error)
+            // console.error('Error fetching next bids:', error)
         }
     }
 
@@ -36,7 +36,7 @@ const LotPage = ({ params }) => {
                     setCurrentBid(response.data.bids[0].amount)
                 }
             } catch (error) {
-                console.error('Error fetching product:', error)
+                // console.error('Error fetching product:', error)
             } finally {
                 setLoading(false)
             }
@@ -61,7 +61,7 @@ const LotPage = ({ params }) => {
             setSelectedBid(null)
             fetchNextBids()
         } catch (error) {
-            console.error('Error placing bid:', error)
+            // console.error('Error placing bid:', error)
         }
     }
 
