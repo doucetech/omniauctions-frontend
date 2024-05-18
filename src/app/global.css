@@ -147,9 +147,9 @@ li {
     font-style: normal;
 }
 body {
-	max-width: 90%;
+	max-width: 90% !important;
 	overflow-x: hidden;
-	margin: 0 auto;
+	margin: 0 auto !important;
 }
 h1,
 h2,
