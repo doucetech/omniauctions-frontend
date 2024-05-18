@@ -171,8 +171,9 @@ img {
     }
 }
 body {
-    max-width: 100%;
-    overflow-x: hidden;
+	max-width: 90%;
+	overflow-x: hidden;
+	margin: 0 auto;
 }
 
 nav {
