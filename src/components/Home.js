@@ -13,6 +13,6 @@ const home = () => {
             <AuctionTabs />
         </div>
     )
-};
+}
 
 export default home

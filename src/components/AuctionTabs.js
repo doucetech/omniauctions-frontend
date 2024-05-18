@@ -42,7 +42,7 @@ const AuctionTabs = () => {
                                         <h2>Furniture</h2>
                                         <div className="auc-date">
                                             <p>
-                                                {formatDateServer('2024-04-15')}
+                                                {/* {formatDateServer('2024-04-15')} */}
                                             </p>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@ const AuctionTabs = () => {
                                         <h2>Vehicles</h2>
                                         <div className="auc-date">
                                             <p>
-                                                {formatDateServer('2024-04-15')}
+                                                {/* {formatDateServer('2024-04-15')} */}
                                             </p>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@ const AuctionTabs = () => {
                                         <h2>Goods</h2>
                                         <div className="auc-date">
                                             <p>
-                                                {formatDateServer('2024-04-15')}
+                                                {/* {formatDateServer('2024-04-15')} */}
                                             </p>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@ const AuctionTabs = () => {
                                         <h2>Industrial</h2>
                                         <div className="auc-date">
                                             <p>
-                                                {formatDateServer('2024-04-15')}
+                                                {/* {formatDateServer('2024-04-15')} */}
                                             </p>
                                         </div>
                                     </div>
