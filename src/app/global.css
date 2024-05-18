@@ -15,121 +15,76 @@
 }
 
 @font-face {
-    font-family: 'omni';
-    src: url('/fonts/omni.eot');
-    src: url('/fonts/omni.eot?#iefix') format('embedded-opentype'),
-        url('/fonts/omni.woff2') format('woff2'),
-        url('/fonts/omni.woff') format('woff'),
-        url('/fonts/omni.ttf') format('truetype'),
-        url('/fonts/omni.svg#omni') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'omni';
+  src: url('/fonts/omni.eot?46468840');
+  src: url('/fonts/omni.eot?46468840#iefix') format('embedded-opentype'),
+       url('/fonts/omni.woff2?46468840') format('woff2'),
+       url('/fonts/omni.woff?46468840') format('woff'),
+       url('/fonts/omni.ttf?46468840') format('truetype'),
+       url('/fonts/omni.svg?46468840#omni') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
-[class^='icon-']:before,
-[class*=' icon-']:before {
-    font-family: 'omni';
-    font-style: normal;
-    font-weight: normal;
-    speak: never;
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: 0.2em;
-    text-align: center;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1em;
-    margin-left: 0.2em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'omni';
-    src: url('/font/omni.svg?31261298#omni') format('svg');
+    src: url('../font/omni.svg?46468840#omni') format('svg');
   }
 }
 */
-[class^='icon-']:before,
-[class*=' icon-']:before {
-    font-family: 'omni';
-    font-style: normal;
-    font-weight: normal;
-    speak: never;
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "omni";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
 
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: 0.2em;
-    text-align: center;
-    /* opacity: .8; */
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
 
-    /* For safety - reset parent styles, that can break glyph codes*/
-    font-variant: normal;
-    text-transform: none;
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
 
-    /* fix buttons height, for twitter bootstrap */
-    line-height: 1em;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
 
-    /* Animation center compensation - margins should be symmetric */
-    /* remove if not needed */
-    margin-left: 0.2em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
 
-    /* you can be more comfortable with increased icons size */
-    /* font-size: 120%; */
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
 
-    /* Font smoothing. That was taken from TWBS */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    /* Uncomment for 3D effect */
-    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-arrow-down:before {
-    content: '\e800';
-} /* '' */
-.icon-arrow-left:before {
-    content: '\e801';
-} /* '' */
-.icon-location:before {
-    content: '\e802';
-} /* '' */
-.icon-share:before {
-    content: '\e803';
-} /* '' */
-.icon-close:before {
-    content: '\e804';
-} /* '' */
-.icon-search:before {
-    content: '\e805';
-} /* '' */
-.icon-youtube:before {
-    content: '\e806';
-} /* '' */
-.icon-linkedin:before {
-    content: '\e807';
-} /* '' */
-.icon-instagram:before {
-    content: '\e808';
-} /* '' */
-.icon-twitter:before {
-    content: '\e809';
-} /* '' */
-.icon-facebook:before {
-    content: '\e80a';
-} /* '' */
-.icon-quote-left:before {
-    content: '\f10d';
-} /* '' */
-.icon-quote-right:before {
-    content: '\f10e';
-} /* '' */
+.icon-arrow-down:before { content: '\e800'; } /* '' */
+.icon-arrow-left:before { content: '\e801'; } /* '' */
+.icon-location:before { content: '\e802'; } /* '' */
+.icon-share:before { content: '\e803'; } /* '' */
+.icon-close:before { content: '\e804'; } /* '' */
+.icon-search:before { content: '\e805'; } /* '' */
+.icon-youtube:before { content: '\e806'; } /* '' */
+.icon-linkedin:before { content: '\e807'; } /* '' */
+.icon-instagram:before { content: '\e808'; } /* '' */
+.icon-twitter:before { content: '\e809'; } /* '' */
+.icon-facebook:before { content: '\e80a'; } /* '' */
+.icon-arrow-rigth:before { content: '\e80b'; } /* '' */
+.icon-quote-left:before { content: '\f10d'; } /* '' */
+.icon-quote-right:before { content: '\f10e'; } /* '' */
+
 
 * {
     margin: 0;
@@ -571,4 +526,79 @@ nav {
     border-top: 1px solid var(--the-white);
     width: 100%;
     top: -30px;
+}
+/* Lots or products page */
+.the-clear {
+	border: 1px solid var(--the-purple);
+	color: var(--the-purple);
+	padding: 10px 45px;
+	display: inline-block;
+	transition: 500ms;
+    position: relative;
+}
+.the-clear::before {
+	content: "\E804";
+	font-family: 'omni';
+	position: relative;
+	left: -6px;
+}
+.the-nxt, .the-prv {
+	background: var(--the-white);
+	height: 50px;
+	width: 50px;
+	border: 1px solid var(--the-grey);
+	display: inline-block;
+	transition: 500ms;
+	position: relative;
+}
+.the-nxt {
+	border-right: 0;
+}
+.the-nxt::before {
+	content: "\E801";
+	font-family: 'omni';
+	color: var(--the-purple);
+	font-size: 1.4em;
+}
+.the-prv::after{
+    content: "\E80B";
+	font-family: 'omni';
+	color: var(--the-purple);
+	font-size: 1.4em;
+}
+.flex-outter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	align-items: center;
+}
+.clear-nxt-prev-sort {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	justify-content: space-between;
+}
+.first-flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	align-items: center;
+}
+.display-nxt-prv-btns button {
+    cursor: pointer;
+    transition: 500ms ;
+    -webkit-transition: 500ms ;
+    -moz-transition: 500ms ;
+    -ms-transition: 500ms ;
+    -o-transition: 500ms ;
+}
+.the-clear:hover {
+	background: var(--the-purple);
+	color: var(--the-white);
+}
+.display-nxt-prv-btns button:hover {
+	background: var(--the-purple);
+}
+.display-nxt-prv-btns button:hover::before, .display-nxt-prv-btns button:hover::after {
+	color: var(--the-white);
 }
