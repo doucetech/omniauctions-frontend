@@ -111,7 +111,7 @@ h6 {
     font-weight: 400;
 }
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 img {
     max-width: 100%;
@@ -128,7 +128,7 @@ img {
 body {
 	max-width: 90%;
 	overflow-x: hidden;
-	margin: 0 auto;
+	margin: 0 auto !important;
 }
 
 nav {
@@ -531,7 +531,7 @@ nav {
 .the-clear {
 	border: 1px solid var(--the-purple);
 	color: var(--the-purple);
-	padding: 10px 45px;
+	padding: 10px 100px;
 	display: inline-block;
 	transition: 500ms;
     position: relative;
@@ -542,6 +542,47 @@ nav {
 	position: relative;
 	left: -6px;
 }
+.site-button:hover {
+	background: var(--the-black);
+}
+.side-title {
+	padding: 2em;
+}
+.side-holder {
+	border: 1px solid var(--the-grey);
+}
+.the-spacing {
+	padding: 2.5em 1.5em;
+	border-top: 1px solid var(--the-grey);
+}
+.form-control {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--bs-body-color);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: var(--bs-body-bg);
+	background-clip: padding-box;
+	border: 1px solid var(--the-grey);
+	border-radius: 0;
+	transition: 500ms;
+	height: 4em;
+}
+
+.site-button {
+	position: relative;
+	background: var(--the-purple);
+	color: var(--the-white);
+	padding: 10px 45px;
+	display: inline-block;
+	margin-top: 15px;
+	transition: 500ms;
+}
 .the-nxt, .the-prv {
 	background: var(--the-white);
 	height: 50px;
@@ -551,8 +592,35 @@ nav {
 	transition: 500ms;
 	position: relative;
 }
+.side-title h6{
+	position: relative;
+}
+.side-title h6::after {
+	content: "\e800";
+	font-family: 'omni';
+	position: absolute;
+	right: 0;
+}
 .the-nxt {
 	border-right: 0;
+}
+.sidebar-items.two, .sidebar-items.three {
+	margin-top: 3em;
+}
+.the-spacing li {
+	line-height: 3;
+	border-bottom: 1px solid var(--the-grey);
+	width: 100%;
+	display: flex;
+	margin: 0px;
+	padding: 0px;
+}
+.the-spacing ul li a {
+	text-decoration: none;
+	color: var(--the-purple);
+}
+.the-spacing ul {
+	padding: 0;
 }
 .the-nxt::before {
 	content: "\E801";
