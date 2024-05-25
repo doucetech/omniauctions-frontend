@@ -367,7 +367,7 @@ const LotsPage = () => {
                         disabled={currentPage === 1}
                         className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
                         >
-                        &laquo; Previous
+                        <i className='icon-arrow-left'></i>Previous
                     </button>
                     <span>
                         Page {currentPage} of {totalPages}
@@ -377,7 +377,7 @@ const LotsPage = () => {
                     disabled={currentPage === totalPages}
                     className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
                     >
-                    Next &raquo;
+                    Next<i className='icon-arrow-rigth'></i>
                 </button>
             </div>
         </div>
