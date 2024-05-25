@@ -137,6 +137,18 @@ nav {
     align-items: center;
     justify-content: space-between;
     min-height: 90px;
+    position: relative;
+}
+div h1 {
+	margin-top: 1em;
+}
+nav::before {
+	content: "";
+	border-bottom: 1px solid var(--the-grey);
+	position: absolute;
+	width: 200vw;
+	left: -100vw;
+	bottom: -10px;
 }
 .navbar-menu-container {
     display: none;
