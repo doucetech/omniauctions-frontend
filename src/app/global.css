@@ -748,6 +748,23 @@ nav {
 .display-nxt-prv-btns button:hover::before, .display-nxt-prv-btns button:hover::after {
 	color: var(--the-white);
 }
+.px-4.py-2.bg-gray-300.rounded.disabled\:opacity-50, .px-4.py-2.bg-gray-300.rounded.disabled\:opacity-50 {
+	cursor: pointer;
+	transition: 500ms;
+	-webkit-transition: 500ms;
+	-moz-transition: 500ms;
+	-ms-transition: 500ms;
+	-o-transition: 500ms;
+	background: var(--the-white);
+	color: var(--the-purple);
+	opacity: 1;
+	border: 1px solid var(--the-purple);
+	border-radius: 0 !important;
+}
+.px-4.py-2.bg-gray-300.rounded.disabled\:opacity-50:hover, .px-4.py-2.bg-gray-300.rounded.disabled\:opacity-50:hover {
+	background: var(--the-purple);
+	color: var(--the-white);
+}
 @media(max-width: 759px){
     .the-ac-flex {
 	display: grid;
