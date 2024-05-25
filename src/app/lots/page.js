@@ -4,96 +4,104 @@
 
 'use client'
 
-import { useEffect, useState } from 'react'
-import axios from '@/lib/axios'
-import TopBar from '@/components/TopBar'
-import Footer from '@/components/Footer'
-import Navbar from '@/app/Navbar'
-import Link from 'next/link'
-import SortBox from '@/components/SortBox'
+import { useEffect, useState } from 'react';
+import axios from '@/lib/axios';
+import TopBar from '@/components/TopBar';
+import Footer from '@/components/Footer';
+import Navbar from '@/app/Navbar';
+import Link from 'next/link';
+import SortBox from '@/components/SortBox';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Image from 'next/image';
+
+// Sample product images
+import ProductImage1 from '../../../public/images/product/product-01.png';
+import ProductImage2 from '../../../public/images/product/product-02.png';
+import ProductImage3 from '../../../public/images/product/product-03.png';
 
 const LotsPage = () => {
-    const [products, setProducts] = useState([])
-    const [categories, setCategories] = useState([]) // State to manage categories
-    const [currentPage, setCurrentPage] = useState(1)
-    const [totalPages, setTotalPages] = useState(1)
-    const [totalResults, setTotalResults] = useState(0)
-    const [loading, setLoading] = useState(false)
-    const [sortOrder, setSortOrder] = useState('default')
-    const [keyword, setKeyword] = useState('')
-    const [priceFrom, setPriceFrom] = useState('') // State to manage price from
-    const [priceTo, setPriceTo] = useState('') // State to manage price to
-    const resultsPerPage = 9
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]); // State to manage categories
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalResults, setTotalResults] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [sortOrder, setSortOrder] = useState('default');
+    const [keyword, setKeyword] = useState('');
+    const [priceFrom, setPriceFrom] = useState(''); // State to manage price from
+    const [priceTo, setPriceTo] = useState(''); // State to manage price to
+    const resultsPerPage = 9;
     
     const fetchProducts = async (page = 1, sort = 'default', keyword = '', category = '', priceFrom = '', priceTo = '') => {
-        setLoading(true)
+        setLoading(true);
         try {
-            const response = await axios.get(`/api/v1/products?page=${page}&sort=${sort}&keyword=${keyword}&category=${category}&price_from=${priceFrom}&price_to=${priceTo}`)
-            setProducts(response.data.data)
-            setCurrentPage(response.data.current_page)
-            setTotalPages(response.data.last_page)
-            setTotalResults(response.data.total)
+            const response = await axios.get(`/api/v1/products?page=${page}&sort=${sort}&keyword=${keyword}&category=${category}&price_from=${priceFrom}&price_to=${priceTo}`);
+            setProducts(response.data.data);
+            setCurrentPage(response.data.current_page);
+            setTotalPages(response.data.last_page);
+            setTotalResults(response.data.total);
         } catch (error) {
-            console.error('Error fetching products:', error)
+            console.error('Error fetching products:', error);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
     
     const fetchCategories = async () => {
         try {
-            const response = await axios.get(`/api/v1/categories`)
-            setCategories(response.data)
+            const response = await axios.get(`/api/v1/categories`);
+            setCategories(response.data);
         } catch (error) {
-            console.error('Error fetching categories:', error)
+            console.error('Error fetching categories:', error);
         }
-    }
+    };
     
     useEffect(() => {
-        fetchProducts(currentPage, sortOrder, keyword, '', priceFrom, priceTo)
-        fetchCategories()
-    }, [currentPage, sortOrder, keyword, priceFrom, priceTo])
+        fetchProducts(currentPage, sortOrder, keyword, '', priceFrom, priceTo);
+        fetchCategories();
+    }, [currentPage, sortOrder, keyword, priceFrom, priceTo]);
     
     const handlePageChange = newPage => {
         if (newPage > 0 && newPage <= totalPages) {
-            setCurrentPage(newPage)
+            setCurrentPage(newPage);
         }
-    }
+    };
     
     const handleSortChange = sort => {
-        setSortOrder(sort)
-    }
+        setSortOrder(sort);
+    };
     
     const handleKeywordChange = (event) => {
-        setKeyword(event.target.value)
-    }
+        setKeyword(event.target.value);
+    };
     
     const handleKeywordUpdate = () => {
-        fetchProducts(1, sortOrder, keyword)
-        setCurrentPage(1)
-    }
+        fetchProducts(1, sortOrder, keyword);
+        setCurrentPage(1);
+    };
     
     const handleCategoryClick = (category) => {
-        fetchProducts(1, sortOrder, keyword, category)
-        setCurrentPage(1)
-    }
-
+        fetchProducts(1, sortOrder, keyword, category);
+        setCurrentPage(1);
+    };
+    
     const handlePriceFromChange = (event) => {
-        setPriceFrom(event.target.value)
-    }
-
+        setPriceFrom(event.target.value);
+    };
+    
     const handlePriceToChange = (event) => {
-        setPriceTo(event.target.value)
-    }
-
+        setPriceTo(event.target.value);
+    };
+    
     const handlePriceUpdate = () => {
-        fetchProducts(1, sortOrder, keyword, '', priceFrom, priceTo)
-        setCurrentPage(1)
-    }
-
-    const startResult = (currentPage - 1) * resultsPerPage + 1
-    const endResult = Math.min(currentPage * resultsPerPage, totalResults)
+        fetchProducts(1, sortOrder, keyword, '', priceFrom, priceTo);
+        setCurrentPage(1);
+    };
+    
+    const startResult = (currentPage - 1) * resultsPerPage + 1;
+    const endResult = Math.min(currentPage * resultsPerPage, totalResults);
     
     return (
     <>
@@ -124,8 +132,7 @@ const LotsPage = () => {
                 </div>
                 <p>Displaying {startResult} to {endResult} of {totalResults} results</p>
             </div>
-            <div className='flex-outter'>
-            </div>
+            <div className='flex-outter'></div>
             <SortBox onSortChange={handleSortChange} />
         </div>
         )}
@@ -139,6 +146,9 @@ const LotsPage = () => {
                     </h2>
                     <p>{product.description}</p>
                     <p>Price: ${product.price}</p>
+                    <div className='actual-img'>
+                        <Image src={ProductImage1} alt='Product Image' className='img-fluid' />
+                    </div>
                 </li>
                 ))}
             </ul>
@@ -192,57 +202,190 @@ const LotsPage = () => {
                             <div className='the-spacing'>
                                 <label htmlFor="price-from">From:</label>
                                 <input
-                                    type="number"
-                                    id="price-from"
-                                    value={priceFrom}
-                                    onChange={handlePriceFromChange}
-                                    className="form-control"
-                                    placeholder="From price"
+                                type="number"
+                                id="price-from"
+                                value={priceFrom}
+                                onChange={handlePriceFromChange}
+                                className="form-control"
+                                placeholder="From price"
                                 />
                                 <label htmlFor="price-to">To:</label>
                                 <input
-                                    type="number"
-                                    id="price-to"
-                                    value={priceTo}
-                                    onChange={handlePriceToChange}
-                                    className="form-control"
-                                    placeholder="To price"
+                                type="number"
+                                id="price-to"
+                                value={priceTo}
+                                onChange={handlePriceToChange}
+                                className="form-control"
+                                placeholder="To price"
                                 />
                                 <button
-                                    onClick={handlePriceUpdate}
-                                    className="site-button mt-2"
+                                onClick={handlePriceUpdate}
+                                className="site-button mt-2"
                                 >
-                                    Update
-                                </button>
-                            </div>
+                                Update
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between mt-4">
-                <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-                >
-                &laquo; Previous
-            </button>
-            <span>
-                Page {currentPage} of {totalPages}
-            </span>
-            <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
-            >
-            Next &raquo;
-        </button>
+            <div className='col-sm-12 col-md-9'>
+                <div className='the-ac-flex'>
+                    <div className='the-actual-p'>
+                        <div className='actual-img'>
+                            <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
+                                <div>
+                                    <Image src={ProductImage1} alt='Product Image 1' className='img-fluid' />
+                                </div>
+                                <div>
+                                    <Image src={ProductImage2} alt='Product Image 2' className='img-fluid' />
+                                </div>
+                                <div>
+                                    <Image src={ProductImage3} alt='Product Image 3' className='img-fluid' />
+                                </div>
+                            </Carousel>
+                        </div>
+                        <div className='act-tex-title'>
+                            <h5>2019 Alfa Romeo Giulia</h5>
+                            <p>Super Sedan 4dr Sport Auto 2.2 DT</p>
+                        </div>
+                        <div className='key-features'>
+                            <p>Key Features</p>
+                        </div>
+                        <div className='price-and-view'>
+                            <div className='stock-price'>
+                                <div className='stck'><p>Stock 623498  Lot 101</p></div>
+                                <div className='the-price'><h4>$25,000</h4>
+                                    <p>Minimum Bid</p></div>
+                                </div>
+                                <div className='prod-bttns'>
+                                    <div className='btn-one'>
+                                        <button>View</button>
+                                    </div>
+                                    <div className='btn-two'>
+                                        <button>Bid Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='share-location'>
+                                <i className='icon-share'></i>
+                                <p className='loca'><i className='icon-location'></i>Harare, Zimbabwe</p>
+                            </div>
+                        </div>
+                        <div className='the-actual-p'>
+                            <div className='actual-img'>
+                                <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
+                                    <div>
+                                        <Image src={ProductImage1} alt='Product Image 1' className='img-fluid' />
+                                    </div>
+                                    <div>
+                                        <Image src={ProductImage2} alt='Product Image 2' className='img-fluid' />
+                                    </div>
+                                    <div>
+                                        <Image src={ProductImage3} alt='Product Image 3' className='img-fluid' />
+                                    </div>
+                                </Carousel>
+                            </div>
+                            <div className='act-tex-title'>
+                                <h5>2019 Alfa Romeo Giulia</h5>
+                                <p>Super Sedan 4dr Sport Auto 2.2 DT</p>
+                            </div>
+                            <div className='key-features'>
+                                <p>Key Features</p>
+                            </div>
+                            <div className='price-and-view'>
+                                <div className='stock-price'>
+                                    <div className='stck'><p>Stock 623498  Lot 101</p></div>
+                                    <div className='the-price'><h4>$25,000</h4>
+                                        <p>Minimum Bid</p></div>
+                                    </div>
+                                    <div className='prod-bttns'>
+                                        <div className='btn-one'>
+                                            <button>View</button>
+                                        </div>
+                                        <div className='btn-two'>
+                                            <button>Bid Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='share-location'>
+                                    <i className='icon-share'></i>
+                                    <p className='loca'><i className='icon-location'></i>Harare, Zimbabwe</p>
+                                </div>
+                            </div>
+                            <div className='the-actual-p'>
+                                <div className='actual-img'>
+                                    <Carousel showThumbs={false} infiniteLoop useKeyboardArrows>
+                                        <div>
+                                            <Image src={ProductImage1} alt='Product Image 1' className='img-fluid' />
+                                        </div>
+                                        <div>
+                                            <Image src={ProductImage2} alt='Product Image 2' className='img-fluid' />
+                                        </div>
+                                        <div>
+                                            <Image src={ProductImage3} alt='Product Image 3' className='img-fluid' />
+                                        </div>
+                                    </Carousel>
+                                </div>
+                                <div className='act-tex-title'>
+                                    <h5>2019 Alfa Romeo Giulia</h5>
+                                    <p>Super Sedan 4dr Sport Auto 2.2 DT</p>
+                                </div>
+                                <div className='key-features'>
+                                    <p>Key Features</p>
+                                </div>
+                                <div className='price-and-view'>
+                                    <div className='stock-price'>
+                                        <div className='stck'><p>Stock 623498  Lot 101</p></div>
+                                        <div className='the-price'><h4>$25,000</h4>
+                                            <p>Minimum Bid</p></div>
+                                        </div>
+                                        <div className='prod-bttns'>
+                                            <div className='btn-one'>
+                                                <button>View</button>
+                                            </div>
+                                            <div className='btn-two'>
+                                                <button>Bid Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='share-location'>
+                                        <i className='icon-share'></i>
+                                        <p className='loca'><i className='icon-location'></i>Harare, Zimbabwe</p>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <div className="flex justify-between mt-4">
+                        <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                        >
+                        &laquo; Previous
+                    </button>
+                    <span>
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+                    >
+                    Next &raquo;
+                </button>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-<Footer />
-</>
-)
+    <Footer />
+    </>
+    );
 }
 
-export default LotsPage
+export default LotsPage;
+

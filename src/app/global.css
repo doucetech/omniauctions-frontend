@@ -12,6 +12,7 @@
     --the-black-gradient: rgba(0, 0, 0, 0.88);
     --the-other-gray: #5c5c5c;
     --the-auction-grey: #f7f7f7;
+    --the-green: #33A360;
 }
 
 @font-face {
@@ -536,6 +537,83 @@ nav {
 	transition: 500ms;
     position: relative;
 }
+.share-location {
+	display: flex;
+	color: var(--the-purple);
+	justify-content: space-between;
+	margin-top: 2em;
+	padding: 0 1em;
+}
+.the-actual-p {
+	max-width: 333px;
+	border: 1px solid var(--the-grey);
+}
+.prod-bttns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: space-between;
+	padding: 0 1em;
+}
+.btn-two button {
+	background: var(--the-purple);
+	color: var(--the-white);
+	padding: 5px 30px;
+	border: 1px solid var(--the-purple);
+	transition: 500ms;
+}
+
+.key-features p {
+	color: var(--the-green);
+	text-transform: uppercase;
+	font-size: 1.2em;
+	position: relative;
+}
+.key-features p::after {
+	content: '\e800';
+	font-family: 'omni';
+	color: var(--the-black);
+	position: absolute;
+	right: 0;
+	font-size: 0.7em;
+}
+.act-tex-title {
+	color: var(--the-purple);
+	margin-top: 1em;
+	padding: 0 1em;
+}
+.act-tex-title h5 {
+	font-weight: 600;
+}
+.stock-price {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	justify-content: space-between;
+	padding: 0 1em;
+	margin-top: 1em;
+}
+.btn-one button:hover {
+	background: var(--the-purple);
+	color: var(--the-white);
+}
+.btn-two button:hover {
+	background: var(--the-white);
+	color: var(--the-purple);
+}
+.btn-one button {
+	color: var(--the-purple);
+	border: 1px solid var(--the-purple);
+	padding: 5px 48px;
+	transition: 500ms;
+}
+.key-features {
+	border-top: 1px solid var(--the-grey);
+	border-bottom: 1px solid var(--the-grey);
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
 .the-clear::before {
 	content: "\E804";
 	font-family: 'omni';
@@ -669,4 +747,18 @@ nav {
 }
 .display-nxt-prv-btns button:hover::before, .display-nxt-prv-btns button:hover::after {
 	color: var(--the-white);
+}
+@media(max-width: 759px){
+    .the-ac-flex {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1em;
+}
+}
+@media(min-width:760px){
+    .the-ac-flex {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1em;
+}
 }
