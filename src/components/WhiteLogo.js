@@ -1,6 +1,6 @@
 const WhiteLogo = props => (
     <div className="nav-logo-container">
-        <img src="images/logo-on-white.png" {...props} />
+        <img className="img-fluid" src="/images/logo-on-white.png" {...props} />
     </div>
 )
 

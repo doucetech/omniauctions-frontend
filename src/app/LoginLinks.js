@@ -10,11 +10,13 @@ const LoginLinks = () => {
     return (
         <>
             {user ? (
-                <Link
-                    href="/dashboard"
-                    className="ml-4 text-sm text-gray-700 underline">
-                    Dashboard
-                </Link>
+                <div className="login">
+                    <Link
+                        href="/dashboard"
+                        className="ml-4 text-sm text-gray-700 underline">
+                        Dashboard
+                    </Link>
+                </div>
             ) : (
                 <>
                     <div className="reg">

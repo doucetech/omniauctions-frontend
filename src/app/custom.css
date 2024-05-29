@@ -1,0 +1,11 @@
+body {
+    max-width: 100% !important;
+}
+
+.nav-logo-container img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    object-position: center;
+    padding-top: 5px;
+}
