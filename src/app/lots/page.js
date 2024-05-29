@@ -150,26 +150,6 @@ const LotsPage = () => {
                             <SortBox onSortChange={handleSortChange} />
                         </div>
                     )}
-                    <ul>
-                        {products.map(product => (
-                            <li key={product.id} className="mb-2">
-                                <h2 className="text-xl">
-                                    <Link href={`/lots/${product.id}`}>
-                                        {product.name}
-                                    </Link>
-                                </h2>
-                                <p>{product.description}</p>
-                                <p>Price: ${product.price}</p>
-                                <div className="actual-img">
-                                    <Image
-                                        src={ProductImage1}
-                                        alt="Product Image"
-                                        className="img-fluid"
-                                    />
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
                     <div className="row">
                         <div className="col-sm-12 col-md-3">
                             <div className="sidebar-items">
@@ -256,195 +236,69 @@ const LotsPage = () => {
                         </div>
                         <div className="col-sm-12 col-md-9">
                             <div className="the-ac-flex">
-                                <div className="the-actual-p">
-                                    <div className="actual-img">
-                                        <Carousel
-                                            showThumbs={false}
-                                            infiniteLoop
-                                            useKeyboardArrows>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage1}
-                                                    alt="Product Image 1"
-                                                    className="img-fluid"
-                                                />
+                                {products.map(product => (
+                                    <div
+                                        key={product.id}
+                                        className="the-actual-p">
+                                        <div className="actual-img">
+                                            <Carousel
+                                                showThumbs={false}
+                                                infiniteLoop
+                                                useKeyboardArrows>
+                                                <div>
+                                                    <Image
+                                                        src={ProductImage1}
+                                                        alt="Product Image"
+                                                        className="img-fluid"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Image
+                                                        src={ProductImage2}
+                                                        alt="Product Image 2"
+                                                        className="img-fluid"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Image
+                                                        src={ProductImage3}
+                                                        alt="Product Image 3"
+                                                        className="img-fluid"
+                                                    />
+                                                </div>
+                                            </Carousel>
+                                        </div>
+                                        <div className="act-tex-title">
+                                            <h5>{product.name}</h5>
+                                            <p>{product.description}</p>
+                                        </div>
+                                        <div className="price-and-view">
+                                            <div className="stock-price">
+                                                <div className="stck">
+                                                    <p>Stock 623498 Lot 101</p>
+                                                </div>
+                                                <div className="the-price">
+                                                    <h4>${product.price}</h4>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage2}
-                                                    alt="Product Image 2"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage3}
-                                                    alt="Product Image 3"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                        </Carousel>
-                                    </div>
-                                    <div className="act-tex-title">
-                                        <h5>2019 Alfa Romeo Giulia</h5>
-                                        <p>Super Sedan 4dr Sport Auto 2.2 DT</p>
-                                    </div>
-                                    <div className="key-features">
-                                        <p>Key Features</p>
-                                    </div>
-                                    <div className="price-and-view">
-                                        <div className="stock-price">
-                                            <div className="stck">
-                                                <p>Stock 623498 Lot 101</p>
-                                            </div>
-                                            <div className="the-price">
-                                                <h4>$25,000</h4>
-                                                <p>Minimum Bid</p>
+                                            <div className="prod-bttns">
+                                                <div className="btn-one">
+                                                    <Link
+                                                        href={`/lots/${product.id}`}>
+                                                        <button>View</button>
+                                                    </Link>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="prod-bttns">
-                                            <div className="btn-one">
-                                                <button>View</button>
-                                            </div>
-                                            <div className="btn-two">
-                                                <button>Bid Now</button>
-                                            </div>
+                                        <div className="share-location">
+                                            <i className="icon-share"></i>
+                                            <p className="loca">
+                                                <i className="icon-location"></i>
+                                                Harare, Zimbabwe
+                                            </p>
                                         </div>
                                     </div>
-                                    <div className="share-location">
-                                        <i className="icon-share"></i>
-                                        <p className="loca">
-                                            <i className="icon-location"></i>
-                                            Harare, Zimbabwe
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="the-actual-p">
-                                    <div className="actual-img">
-                                        <Carousel
-                                            showThumbs={false}
-                                            infiniteLoop
-                                            useKeyboardArrows>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage1}
-                                                    alt="Product Image 1"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage2}
-                                                    alt="Product Image 2"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage3}
-                                                    alt="Product Image 3"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                        </Carousel>
-                                    </div>
-                                    <div className="act-tex-title">
-                                        <h5>2019 Alfa Romeo Giulia</h5>
-                                        <p>Super Sedan 4dr Sport Auto 2.2 DT</p>
-                                    </div>
-                                    <div className="key-features">
-                                        <p>Key Features</p>
-                                    </div>
-                                    <div className="price-and-view">
-                                        <div className="stock-price">
-                                            <div className="stck">
-                                                <p>Stock 623498 Lot 101</p>
-                                            </div>
-                                            <div className="the-price">
-                                                <h4>$25,000</h4>
-                                                <p>Minimum Bid</p>
-                                            </div>
-                                        </div>
-                                        <div className="prod-bttns">
-                                            <div className="btn-one">
-                                                <button>View</button>
-                                            </div>
-                                            <div className="btn-two">
-                                                <button>Bid Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="share-location">
-                                        <i className="icon-share"></i>
-                                        <p className="loca">
-                                            <i className="icon-location"></i>
-                                            Harare, Zimbabwe
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="the-actual-p">
-                                    <div className="actual-img">
-                                        <Carousel
-                                            showThumbs={false}
-                                            infiniteLoop
-                                            useKeyboardArrows>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage1}
-                                                    alt="Product Image 1"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage2}
-                                                    alt="Product Image 2"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Image
-                                                    src={ProductImage3}
-                                                    alt="Product Image 3"
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                        </Carousel>
-                                    </div>
-                                    <div className="act-tex-title">
-                                        <h5>2019 Alfa Romeo Giulia</h5>
-                                        <p>Super Sedan 4dr Sport Auto 2.2 DT</p>
-                                    </div>
-                                    <div className="key-features">
-                                        <p>Key Features</p>
-                                    </div>
-                                    <div className="price-and-view">
-                                        <div className="stock-price">
-                                            <div className="stck">
-                                                <p>Stock 623498 Lot 101</p>
-                                            </div>
-                                            <div className="the-price">
-                                                <h4>$25,000</h4>
-                                                <p>Minimum Bid</p>
-                                            </div>
-                                        </div>
-                                        <div className="prod-bttns">
-                                            <div className="btn-one">
-                                                <button>View</button>
-                                            </div>
-                                            <div className="btn-two">
-                                                <button>Bid Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="share-location">
-                                        <i className="icon-share"></i>
-                                        <p className="loca">
-                                            <i className="icon-location"></i>
-                                            Harare, Zimbabwe
-                                        </p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
