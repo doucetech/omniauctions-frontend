@@ -37,7 +37,7 @@ const AddProduct = () => {
                 description,
                 price,
             })
-            setSuccessMessage('Product added successfully!')
+            setSuccessMessage('Lot added successfully!')
             setProducts([...products, response.data])
             setName('')
             setDescription('')
@@ -62,6 +62,12 @@ const AddProduct = () => {
                     <i className="fas fa-plus fa-sm text-white-50"></i> Add Lot
                 </button>
             </div>
+            {successMessage && (
+                <div className="mb-4 text-success">{successMessage}</div>
+            )}
+            {errorMessage && (
+                <div className="mb-4 text-danger">{errorMessage}</div>
+            )}
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
                     <h6 className="m-0 font-weight-bold text-primary">
@@ -122,16 +128,6 @@ const AddProduct = () => {
                             </div>
                             <form onSubmit={handleSubmit}>
                                 <div className="modal-body">
-                                    {successMessage && (
-                                        <div className="mb-4 text-success">
-                                            {successMessage}
-                                        </div>
-                                    )}
-                                    {errorMessage && (
-                                        <div className="mb-4 text-danger">
-                                            {errorMessage}
-                                        </div>
-                                    )}
                                     <div className="form-group">
                                         <label htmlFor="name">Name:</label>
                                         <input
