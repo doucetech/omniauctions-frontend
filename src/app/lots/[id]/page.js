@@ -75,7 +75,7 @@ const LotPage = ({ params }) => {
             <TopBar />
             <div className="buy-container">
                 <Navbar />
-                <div className="container mx-auto p-4">
+                <div className="container justify-center mx-auto p-4">
                     <h1>{product.name}</h1>
                     <p>{product.description}</p>
                     <p>Current Bid: ${currentBid || product.price}</p>
