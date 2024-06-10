@@ -42,7 +42,6 @@ const AddProduct = () => {
             setName('')
             setDescription('')
             setPrice('')
-            setShowModal(false)
         } catch (error) {
             setErrorMessage(
                 error.response?.data?.message || 'Error creating product',
@@ -50,6 +49,8 @@ const AddProduct = () => {
         } finally {
             setLoading(false)
         }
+
+        setShowModal(false)
     }
 
     return (
