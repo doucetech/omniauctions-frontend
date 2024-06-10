@@ -29,15 +29,15 @@ const Navigation = () => {
                     </NavLink>
                 </li>
 
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <NavLink
                         class="nav-link"
-                        href="/"
-                        active={usePathname() === '/'}>
+                        href="//"
+                        active={usePathname() === '//'}>
                         <i className="fas fa-fw fa-tachometer-alt"></i>
                         <span>Website</span>
                     </NavLink>
-                </li>
+                </li> */}
 
                 <hr className="sidebar-divider" />
 

@@ -17,6 +17,10 @@ const Page = () => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [identification, setIdentification] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
     const [errors, setErrors] = useState([])
@@ -27,6 +31,10 @@ const Page = () => {
         register({
             name,
             email,
+            address,
+            city,
+            identification,
+            phone,
             password,
             password_confirmation: passwordConfirmation,
             setErrors,
@@ -52,6 +60,23 @@ const Page = () => {
                 <InputError messages={errors.name} className="mt-2" />
             </div>
 
+            <div>
+                <Label htmlFor="phone">Phone</Label>
+
+                <Input
+                    id="phone"
+                    type="number"
+                    value={phone}
+                    className="block mt-1 w-full"
+                    onChange={event => setPhone(event.target.value)}
+                    required
+                    autoFocus
+                    placeholder="263712345678"
+                />
+
+                <InputError messages={errors.phone} className="mt-2" />
+            </div>
+
             {/* Email Address */}
             <div className="mt-4">
                 <Label htmlFor="email">Email</Label>
@@ -66,6 +91,56 @@ const Page = () => {
                 />
 
                 <InputError messages={errors.email} className="mt-2" />
+            </div>
+
+            <div>
+                <Label htmlFor="identification">ID Number</Label>
+
+                <Input
+                    id="identification"
+                    type="text"
+                    value={identification}
+                    className="block mt-1 w-full"
+                    onChange={event => setIdentification(event.target.value)}
+                    required
+                    autoFocus
+                    placeholder="00-0000000-A00"
+                />
+
+                <InputError messages={errors.identification} className="mt-2" />
+            </div>
+
+            <div>
+                <Label htmlFor="city">City</Label>
+
+                <Input
+                    id="city"
+                    type="text"
+                    value={city}
+                    className="block mt-1 w-full"
+                    onChange={event => setCity(event.target.value)}
+                    required
+                    autoFocus
+                    placeholder="Harare"
+                />
+
+                <InputError messages={errors.city} className="mt-2" />
+            </div>
+
+            <div>
+                <Label htmlFor="address">Residential Address</Label>
+
+                <Input
+                    id="address"
+                    type="text"
+                    value={address}
+                    className="block mt-1 w-full"
+                    onChange={event => setAddress(event.target.value)}
+                    required
+                    autoFocus
+                />
+
+                <InputError messages={errors.address} className="mt-2" />
             </div>
 
             {/* Password */}
