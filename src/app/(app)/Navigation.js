@@ -21,7 +21,7 @@ const Navigation = () => {
 
                 <li className="nav-item">
                     <NavLink
-                        class="nav-link"
+                        className="nav-link"
                         href="/dashboard"
                         active={usePathname() === '/dashboard'}>
                         <i className="fas fa-fw fa-tachometer-alt"></i>
@@ -89,7 +89,7 @@ const Navigation = () => {
 
                 <li className="nav-item">
                     <NavLink
-                        class="nav-link"
+                        className="nav-link"
                         href="/dashboard/lots"
                         active={usePathname() === '/dashboard/lots'}>
                         <i className="fas fa-fw fa-chart-area"></i>
