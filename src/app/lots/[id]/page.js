@@ -1,13 +1,14 @@
 'use client'
-
 import TopBar from '@/components/TopBar'
 import Footer from '@/components/Footer'
 import Navbar from '@/app/Navbar'
 import { useEffect, useState } from 'react'
 import axios from '@/lib/axios'
 import moment from 'moment'
+import { useAuth } from '@/hooks/auth'
 
 const LotPage = ({ params }) => {
+    const { user } = useAuth({ middleware: 'auth' })
     const productId = params.id
     const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -25,7 +26,7 @@ const LotPage = ({ params }) => {
             )
             setNextBids(response.data)
         } catch (error) {
-            // console.error('Error fetching next bids:', error)
+            console.error('Error fetching next bids:', error)
         }
     }
 
@@ -41,7 +42,7 @@ const LotPage = ({ params }) => {
                     setCurrentBid(response.data.bids[0].amount)
                 }
             } catch (error) {
-                // console.error('Error fetching product:', error)
+                console.error('Error fetching product:', error)
             } finally {
                 setLoading(false)
             }
@@ -77,16 +78,8 @@ const LotPage = ({ params }) => {
             setSelectedBid(null)
             fetchNextBids()
         } catch (error) {
-            // console.error('Error placing bid:', error)
+            console.error('Error placing bid:', error)
         }
-    }
-
-    if (loading) {
-        return <p>Loading...</p>
-    }
-
-    if (!product) {
-        return <p>Product not found</p>
     }
 
     const calculateTimeLeft = () => {
@@ -113,6 +106,18 @@ const LotPage = ({ params }) => {
         }
     }
 
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
+    if (!product) {
+        return <p>Product not found</p>
+    }
+
+    if (!user) {
+        return <p>Login first</p>
+    }
+
     return (
         <>
             <TopBar />
@@ -135,33 +140,44 @@ const LotPage = ({ params }) => {
                                 {timeLeft.hours}h {timeLeft.minutes}m{' '}
                                 {timeLeft.seconds}s
                             </p>
-
                             <p>Current Bid: ${currentBid || product.price}</p>
-                            <h2>Bid:</h2>
-                            <ul>
-                                {nextBids.map((bid, index) => (
-                                    <li key={index}>
-                                        <input
-                                            type="radio"
-                                            id={`bid-${index}`}
-                                            name="nextBid"
-                                            value={bid}
-                                            checked={selectedBid === bid}
-                                            onChange={() => setSelectedBid(bid)}
-                                        />
-                                        <label htmlFor={`bid-${index}`}>
-                                            {' '}
-                                            ${bid}
-                                        </label>
-                                    </li>
-                                ))}
-                            </ul>
-                            <button
-                                className="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
-                                onClick={handleBidSubmit}
-                                disabled={!selectedBid}>
-                                Place Bid
-                            </button>
+                            {product.user_id !== user.id ? (
+                                <>
+                                    <h2>Bid:</h2>
+                                    <ul>
+                                        {nextBids.map((bid, index) => (
+                                            <li key={index}>
+                                                <input
+                                                    type="radio"
+                                                    id={`bid-${index}`}
+                                                    name="nextBid"
+                                                    value={bid}
+                                                    checked={
+                                                        selectedBid === bid
+                                                    }
+                                                    onChange={() =>
+                                                        setSelectedBid(bid)
+                                                    }
+                                                />
+                                                <label htmlFor={`bid-${index}`}>
+                                                    {' '}
+                                                    ${bid}
+                                                </label>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <button
+                                        className="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                                        onClick={handleBidSubmit}
+                                        disabled={!selectedBid}>
+                                        Place Bid
+                                    </button>
+                                </>
+                            ) : (
+                                <p className="text-red-500 mt-2">
+                                    You cannot bid on your own product.
+                                </p>
+                            )}
                         </>
                     ) : (
                         <p>Auction Ended</p>
