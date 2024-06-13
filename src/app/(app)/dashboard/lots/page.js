@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import axios from '@/lib/axios'
+import { FaUpload } from 'react-icons/fa'
+import Link from 'next/link'
 
 const AddProduct = () => {
     const [products, setProducts] = useState([])
@@ -79,7 +81,7 @@ const AddProduct = () => {
                 <button
                     onClick={() => setShowModal(true)}
                     className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                    <i className="fas fa-plus fa-sm text-white-50"></i> Add Lot
+                    <FaUpload className="fas fa-fw" /> ADD LOT
                 </button>
             </div>
             {successMessage && (
@@ -130,7 +132,12 @@ const AddProduct = () => {
                                                 />
                                             )}
                                         </td>
-                                        <td>{product.name}</td>
+                                        <td>
+                                            <Link
+                                                href={`/dashboard/lots/${product.id}`}>
+                                                {product.name}
+                                            </Link>
+                                        </td>
                                         <td>{product.description}</td>
                                         <td>${product.price}</td>
                                     </tr>
@@ -154,7 +161,7 @@ const AddProduct = () => {
                                 overflowY: 'auto',
                             }}>
                             <div className="modal-header">
-                                <h5 className="modal-title">Add Product</h5>
+                                <h5 className="modal-title">Add Lot</h5>
                                 <button
                                     type="button"
                                     className="close"

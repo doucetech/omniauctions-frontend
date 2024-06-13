@@ -4,6 +4,13 @@ import WhiteLogo from '@/components/WhiteLogo'
 import Link from 'next/link'
 import NavLink from '@/components/NavLink'
 import { usePathname } from 'next/navigation'
+import {
+    FaTachometerAlt,
+    FaWrench,
+    FaBox,
+    FaMoneyBill,
+    FaHistory,
+} from 'react-icons/fa'
 
 const Navigation = () => {
     return (
@@ -24,20 +31,21 @@ const Navigation = () => {
                         className="nav-link"
                         href="/dashboard"
                         active={usePathname() === '/dashboard'}>
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
+                        <FaTachometerAlt className="fas fa-fw" />
+                        <span> Dashboard</span>
                     </NavLink>
                 </li>
 
-                {/* <li className="nav-item">
-                    <NavLink
-                        class="nav-link"
-                        href="//"
-                        active={usePathname() === '//'}>
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                <li className="nav-item">
+                    <a
+                        className="nav-link"
+                        href="/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <FaTachometerAlt className="fas fa-fw" />
                         <span>Website</span>
-                    </NavLink>
-                </li> */}
+                    </a>
+                </li>
 
                 <hr className="sidebar-divider" />
 
@@ -51,7 +59,7 @@ const Navigation = () => {
                         data-target="#collapseUtilities"
                         aria-expanded="true"
                         aria-controls="collapseUtilities">
-                        <i className="fas fa-fw fa-wrench"></i>
+                        <FaWrench className="fas fa-fw" />
                         <span>Utilities</span>
                     </a>
                     <div
@@ -92,8 +100,26 @@ const Navigation = () => {
                         className="nav-link"
                         href="/dashboard/lots"
                         active={usePathname() === '/dashboard/lots'}>
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Lots</span>
+                        <FaBox className="fas fa-fw" />
+                        <span> Lots</span>
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink
+                        className="nav-link"
+                        href="/dashboard/bids"
+                        active={usePathname() === '/dashboard/bids'}>
+                        <FaMoneyBill className="fas fa-fw" />
+                        <span> Bids</span>
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink
+                        className="nav-link"
+                        href="/dashboard/past-bids"
+                        active={usePathname() === '/dashboard/past-bids'}>
+                        <FaHistory className="fas fa-fw" />
+                        <span> Past Bids</span>
                     </NavLink>
                 </li>
             </ul>

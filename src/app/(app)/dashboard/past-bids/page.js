@@ -17,7 +17,7 @@ const Bids = () => {
 
     const fetchBids = async (page = 1) => {
         try {
-            const response = await axios.get(`/api/v1/my-bids?page=${page}`)
+            const response = await axios.get(`/api/v1/past-bids?page=${page}`)
             setBidsData(response.data.original)
         } catch (error) {
             console.error('Error fetching bids:', error)
@@ -31,11 +31,13 @@ const Bids = () => {
     return (
         <>
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 className="h3 mb-0 text-gray-800">My Bids</h1>
+                <h1 className="h3 mb-0 text-gray-800">Past Bids</h1>
             </div>
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                    <h6 className="m-0 font-weight-bold text-primary">Bids</h6>
+                    <h6 className="m-0 font-weight-bold text-primary">
+                        Past Bids
+                    </h6>
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">
@@ -52,6 +54,8 @@ const Bids = () => {
                                     <th>Amount</th>
                                     <th>Location</th>
                                     <th>Message</th>
+                                    <th>Seller Name</th>
+                                    <th>Seller Phone</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,18 +73,13 @@ const Bids = () => {
                                                 />
                                             )}
                                         </td>
-                                        <td>
-                                            <a
-                                                href={`/lots/${bid.product_id}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer">
-                                                {bid.name}
-                                            </a>
-                                        </td>
+                                        <td>{bid.name}</td>
                                         <td>{bid.description}</td>
                                         <td>${bid.amount}</td>
                                         <td>{bid.location}</td>
                                         <td>{bid.message}</td>
+                                        <td>{bid.owner.name}</td>
+                                        <td>{bid.owner.phone}</td>
                                     </tr>
                                 ))}
                             </tbody>

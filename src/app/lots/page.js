@@ -18,7 +18,6 @@ import Image from 'next/image'
 import moment from 'moment'
 
 // Sample product images
-import ProductImage1 from '../../../public/images/product/product-01.png'
 import ProductImage2 from '../../../public/images/product/product-02.png'
 import ProductImage3 from '../../../public/images/product/product-03.png'
 
