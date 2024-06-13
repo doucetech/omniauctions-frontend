@@ -8,6 +8,8 @@ const AddProduct = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [featuredImage, setFeaturedImage] = useState(null)
+    const [endTimeOption, setEndTimeOption] = useState('1')
     const [loading, setLoading] = useState(false)
     const [successMessage, setSuccessMessage] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
@@ -31,17 +33,27 @@ const AddProduct = () => {
         setSuccessMessage('')
         setErrorMessage('')
 
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('description', description)
+        formData.append('price', price)
+        formData.append('end_time_option', endTimeOption)
+        if (featuredImage) {
+            formData.append('featured_image', featuredImage)
+        }
+
         try {
-            const response = await axios.post('/api/v1/products', {
-                name,
-                description,
-                price,
+            const response = await axios.post('/api/v1/products', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
             })
-            setSuccessMessage('Lot added successfully!')
+            setSuccessMessage('Product added successfully!')
             setProducts([...products, response.data])
             setName('')
             setDescription('')
             setPrice('')
+            setFeaturedImage(null)
         } catch (error) {
             setErrorMessage(
                 error.response?.data?.message || 'Error creating product',
@@ -84,6 +96,7 @@ const AddProduct = () => {
                             cellSpacing="0">
                             <thead>
                                 <tr>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Price</th>
@@ -91,6 +104,7 @@ const AddProduct = () => {
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Price</th>
@@ -99,6 +113,18 @@ const AddProduct = () => {
                             <tbody>
                                 {products.map((product, index) => (
                                     <tr key={index}>
+                                        <td>
+                                            {product.featured_image && (
+                                                <img
+                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.featured_image}`}
+                                                    alt={product.name}
+                                                    style={{
+                                                        width: '50px',
+                                                        height: '50px',
+                                                    }}
+                                                />
+                                            )}
+                                        </td>
                                         <td>{product.name}</td>
                                         <td>{product.description}</td>
                                         <td>${product.price}</td>
@@ -165,6 +191,35 @@ const AddProduct = () => {
                                                 setPrice(e.target.value)
                                             }
                                         />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="featuredImage">
+                                            Featured Image:
+                                        </label>
+                                        <input
+                                            type="file"
+                                            className="form-control"
+                                            id="featuredImage"
+                                            onChange={e =>
+                                                setFeaturedImage(
+                                                    e.target.files[0],
+                                                )
+                                            }
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="endTimeOption">
+                                            Bidding End Time:
+                                        </label>
+                                        <select
+                                            className="form-control"
+                                            id="endTimeOption"
+                                            value={endTimeOption}
+                                            onChange={handleEndTimeChange}>
+                                            <option value="1">1 day</option>
+                                            <option value="2">2 days</option>
+                                            <option value="3">3 days</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="modal-footer">

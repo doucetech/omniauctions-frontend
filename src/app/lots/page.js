@@ -15,6 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import Image from 'next/image'
+import moment from 'moment'
 
 // Sample product images
 import ProductImage1 from '../../../public/images/product/product-01.png'
@@ -111,6 +112,48 @@ const LotsPage = () => {
 
     const startResult = (currentPage - 1) * resultsPerPage + 1
     const endResult = Math.min(currentPage * resultsPerPage, totalResults)
+
+    const calculateTimeLeft = endTime => {
+        const now = moment()
+        const end = moment(endTime)
+
+        if (now >= end) {
+            return {
+                sold: true,
+            }
+        }
+
+        const duration = moment.duration(end.diff(now))
+        return {
+            hours: Math.floor(duration.asHours()),
+            minutes: duration.minutes(),
+            seconds: duration.seconds(),
+        }
+    }
+
+    const [timeLeft, setTimeLeft] = useState({})
+
+    useEffect(() => {
+        const intervals = products.map(product => {
+            if (!product.sold) {
+                const interval = setInterval(() => {
+                    const newTimeLeft = calculateTimeLeft(product.end_time)
+                    setTimeLeft(prevTimeLeft => ({
+                        ...prevTimeLeft,
+                        [product.id]: newTimeLeft,
+                    }))
+                }, 1000)
+                return interval
+            }
+            return null
+        })
+
+        return () => {
+            intervals.forEach(interval => {
+                if (interval) clearInterval(interval)
+            })
+        }
+    }, [products])
 
     return (
         <>
@@ -246,9 +289,9 @@ const LotsPage = () => {
                                                 infiniteLoop
                                                 useKeyboardArrows>
                                                 <div>
-                                                    <Image
-                                                        src={ProductImage1}
-                                                        alt="Product Image"
+                                                    <img
+                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.featured_image}`}
+                                                        alt={product.name}
                                                         className="img-fluid"
                                                     />
                                                 </div>
@@ -275,7 +318,26 @@ const LotsPage = () => {
                                         <div className="price-and-view">
                                             <div className="stock-price">
                                                 <div className="stck">
-                                                    <p>Stock 623498 Lot 101</p>
+                                                    {timeLeft[product.id]
+                                                        ?.sold ? (
+                                                        <p>Sold</p>
+                                                    ) : (
+                                                        <p>
+                                                            Time left:{' '}
+                                                            {timeLeft[
+                                                                product.id
+                                                            ]?.hours ?? 0}
+                                                            h{' '}
+                                                            {timeLeft[
+                                                                product.id
+                                                            ]?.minutes ?? 0}
+                                                            m{' '}
+                                                            {timeLeft[
+                                                                product.id
+                                                            ]?.seconds ?? 0}
+                                                            s
+                                                        </p>
+                                                    )}
                                                 </div>
                                                 <div className="the-price">
                                                     <h4>${product.price}</h4>
