@@ -320,10 +320,9 @@ const LotsPage = () => {
                                                 <div className="stck">
                                                     {timeLeft[product.id]
                                                         ?.sold ? (
-                                                        <p>Sold</p>
+                                                        <p>Auction Ended</p>
                                                     ) : (
                                                         <p>
-                                                            Time left:{' '}
                                                             {timeLeft[
                                                                 product.id
                                                             ]?.hours ?? 0}
@@ -339,6 +338,7 @@ const LotsPage = () => {
                                                         </p>
                                                     )}
                                                 </div>
+                                                <br />
                                                 <div className="the-price">
                                                     <h4>${product.price}</h4>
                                                 </div>
@@ -356,7 +356,7 @@ const LotsPage = () => {
                                             <i className="icon-share"></i>
                                             <p className="loca">
                                                 <i className="icon-location"></i>
-                                                Harare, Zimbabwe
+                                                {product.location}
                                             </p>
                                         </div>
                                     </div>
