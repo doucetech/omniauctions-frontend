@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import axios from '@/lib/axios'
 import moment from 'moment'
 import { useAuth } from '@/hooks/auth'
+import Loading from '@/app/(app)/Loading'
 
 const LotPage = ({ params }) => {
     const { user } = useAuth({ middleware: 'auth' })
@@ -115,7 +116,7 @@ const LotPage = ({ params }) => {
     }
 
     if (!user) {
-        return <p>Login first</p>
+        return <Loading />
     }
 
     return (
