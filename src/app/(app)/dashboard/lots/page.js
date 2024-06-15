@@ -11,6 +11,7 @@ const AddProduct = () => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [featuredImage, setFeaturedImage] = useState(null)
+    const [galleryImages, setGalleryImages] = useState([])
     const [endTimeOption, setEndTimeOption] = useState('1')
     const [loading, setLoading] = useState(false)
     const [successMessage, setSuccessMessage] = useState('')
@@ -34,6 +35,10 @@ const AddProduct = () => {
         setEndTimeOption(e.target.value)
     }
 
+    const handleGalleryImagesChange = e => {
+        setGalleryImages([...e.target.files])
+    }
+
     const handleSubmit = async e => {
         e.preventDefault()
         setLoading(true)
@@ -50,6 +55,10 @@ const AddProduct = () => {
             formData.append('featured_image', featuredImage)
         }
 
+        galleryImages.forEach((image, index) => {
+            formData.append(`gallery_images[${index}]`, image)
+        })
+
         try {
             const response = await axios.post('/api/v1/products', formData, {
                 headers: {
@@ -62,6 +71,7 @@ const AddProduct = () => {
             setDescription('')
             setPrice('')
             setFeaturedImage(null)
+            setGalleryImages([])
             setLocation('Harare')
         } catch (error) {
             setErrorMessage(
@@ -222,6 +232,18 @@ const AddProduct = () => {
                                                     e.target.files[0],
                                                 )
                                             }
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="galleryImages">
+                                            Gallery Images (Atleast 3):
+                                        </label>
+                                        <input
+                                            type="file"
+                                            className="form-control"
+                                            id="galleryImages"
+                                            multiple
+                                            onChange={handleGalleryImagesChange}
                                         />
                                     </div>
                                     <div className="form-group">

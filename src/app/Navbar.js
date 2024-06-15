@@ -23,7 +23,6 @@ const Navbar = () => {
                     <ApplicationLogo className="block h-12 w-auto fill-current text-gray-600" />
                 </Link>
                 <div className="navbar-links-container">
-                    <Link href="/buy">Buy</Link>
                     <Link href="/lots">Lots</Link>
                     <Link href="/about-omni">About Omni</Link>
                     <Link href="/more">More</Link>

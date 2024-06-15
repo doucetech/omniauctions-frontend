@@ -11,15 +11,9 @@ import Footer from '@/components/Footer'
 import Navbar from '@/app/Navbar'
 import Link from 'next/link'
 import SortBox from '@/components/SortBox'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import Image from 'next/image'
 import moment from 'moment'
-
-// Sample product images
-import ProductImage2 from '../../../public/images/product/product-02.png'
-import ProductImage3 from '../../../public/images/product/product-03.png'
 
 const LotsPage = () => {
     const [products, setProducts] = useState([])
@@ -153,6 +147,13 @@ const LotsPage = () => {
             })
         }
     }, [products])
+
+    const truncateDescription = (description, maxLength) => {
+        if (description.length <= maxLength) {
+            return description
+        }
+        return `${description.substring(0, maxLength)}...`
+    }
 
     return (
         <>
@@ -291,28 +292,36 @@ const LotsPage = () => {
                                                     <img
                                                         src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.featured_image}`}
                                                         alt={product.name}
-                                                        className="img-fluid"
+                                                        width={200}
+                                                        height={200}
                                                     />
                                                 </div>
-                                                <div>
-                                                    <Image
-                                                        src={ProductImage2}
-                                                        alt="Product Image 2"
-                                                        className="img-fluid"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Image
-                                                        src={ProductImage3}
-                                                        alt="Product Image 3"
-                                                        className="img-fluid"
-                                                    />
-                                                </div>
+                                                {product.images &&
+                                                    product.images.map(
+                                                        (image, index) => (
+                                                            <div key={index}>
+                                                                <img
+                                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${image.path}`}
+                                                                    alt={`Gallery Image ${
+                                                                        index +
+                                                                        1
+                                                                    }`}
+                                                                    width={200}
+                                                                    height={200}
+                                                                />
+                                                            </div>
+                                                        ),
+                                                    )}
                                             </Carousel>
                                         </div>
                                         <div className="act-tex-title">
                                             <h5>{product.name}</h5>
-                                            <p>{product.description}</p>
+                                            <p>
+                                                {truncateDescription(
+                                                    product.description,
+                                                    50,
+                                                )}
+                                            </p>
                                         </div>
                                         <div className="price-and-view">
                                             <div className="stock-price">
