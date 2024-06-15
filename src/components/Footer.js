@@ -27,19 +27,19 @@ const Footer = () => {
                 </div>
                 <div className="follow">
                     <h2>Follow Us</h2>
-                    <a href='#'>
+                    <a href="#">
                         <i className="icon-youtube"></i>
                     </a>
-                    <a href='#'>
+                    <a href="#">
                         <i className="icon-linkedin"></i>
                     </a>
-                    <a href='#'>
+                    <a href="#">
                         <i className="icon-instagram"></i>
                     </a>
-                    <a href='#'>
+                    <a href="#">
                         <i className="icon-twitter"></i>
                     </a>
-                    <a href='#'>
+                    <a href="#">
                         <i className="icon-facebook"></i>
                     </a>
                 </div>
