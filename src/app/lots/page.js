@@ -160,7 +160,7 @@ const LotsPage = () => {
             <div className="buy-container">
                 <Navbar />
                 <div className="">
-                    <h1 className="">Lots</h1>
+                    <h1 className="page-title">Lots</h1>
                     {loading ? (
                         <p>Loading...</p>
                     ) : (
