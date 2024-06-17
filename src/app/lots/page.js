@@ -290,7 +290,7 @@ const LotsPage = () => {
                                                 useKeyboardArrows>
                                                 <div>
                                                     <img
-                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.featured_image}`}
+                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.featured_image}`}
                                                         alt={product.name}
                                                         width={200}
                                                         height={200}

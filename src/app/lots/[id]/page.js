@@ -68,11 +68,11 @@ const LotPage = ({ params }) => {
                 }
 
                 setMainImage(
-                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${productData.featured_image}`,
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}${productData.featured_image}`,
                 )
                 setImages([
                     {
-                        src: `${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${productData.featured_image}`,
+                        src: `${process.env.NEXT_PUBLIC_BACKEND_URL}${productData.featured_image}`,
                         alt: productData.name,
                     },
                     ...productData.images.map((image, index) => ({

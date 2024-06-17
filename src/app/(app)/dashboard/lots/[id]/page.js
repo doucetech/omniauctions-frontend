@@ -88,7 +88,7 @@ const Lot = ({ params }) => {
             </div>
             <div className="container justify-center mx-auto p-4">
                 <img
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.featured_image}`}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.featured_image}`}
                     alt={product.name}
                     className="img-fluid"
                     width={300}

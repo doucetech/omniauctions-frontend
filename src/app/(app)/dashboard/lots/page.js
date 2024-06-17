@@ -133,7 +133,7 @@ const AddProduct = () => {
                                         <td>
                                             {product.featured_image && (
                                                 <img
-                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${product.featured_image}`}
+                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.featured_image}`}
                                                     alt={product.name}
                                                     style={{
                                                         width: '50px',

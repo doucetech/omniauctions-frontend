@@ -64,7 +64,7 @@ const Bids = () => {
                                         <td>
                                             {bid.featured_image && (
                                                 <img
-                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/images/${bid.featured_image}`}
+                                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${bid.featured_image}`}
                                                     alt={bid.name}
                                                     style={{
                                                         width: '50px',
